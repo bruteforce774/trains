@@ -29,7 +29,13 @@ function App() {
     localStorage.setItem("trains", JSON.stringify(updatedTrains));
   };
 
-  return <Timetable trains={trains} onDelete={handleDelete} />;
+  const handleReschedule = (uuidToReschedule: string) => {
+    const newTime = prompt('New time?')
+    const trainToReschedule = trains.find(train => train.uuid === uuidToReschedule);
+
+  }
+
+  return <Timetable trains={trains} onDelete={handleDelete} onReschedule={handleReschedule} />;
 }
 
 export default App;
