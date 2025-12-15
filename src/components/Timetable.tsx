@@ -1,7 +1,8 @@
 import type { Train } from '../types'
 type TimetableProps = { trains: Train[] };
 
-function Timetable({ trains }: TimetableProps) { 
+function Timetable({ trains }: TimetableProps) {
+
     return (
         <></>
     )
