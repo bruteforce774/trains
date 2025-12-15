@@ -1,0 +1,29 @@
+[
+  {
+    "uuid": "2e527232-f976-430c-b8d3-a41529c548c1",
+    "trainIdent": "IC 125",
+    "startStation": "London",
+    "endStation": "Edinburgh",
+    "currentStation": "London",
+    "departure": "08:30",
+    "arrival": "13:45"
+  },
+  {
+    "uuid": "37202bbe-476d-43f7-9c88-008ab35088ef",
+    "trainIdent": "RE 447",
+    "startStation": "Manchester",
+    "endStation": "Birmingham",
+    "currentStation": "Manchester",
+    "departure": "10:15",
+    "arrival": "12:30"
+  },
+  {
+    "uuid": "105b1a7f-5e48-429a-b304-50e4ed13ccbc",
+    "trainIdent": "EXP 89",
+    "startStation": "Bristol",
+    "endStation": "London",
+    "currentStation": "Bristol",
+    "departure": "14:00",
+    "arrival": "16:20"
+  }
+]
