@@ -1,5 +1,6 @@
 import trainsData from './data/trains.json'
 import type { Train } from './types'
+import Timetable from './components/Timetable'
 
 const trains = trainsData as Train[]
 
@@ -9,7 +10,9 @@ for (let train of trains) {
 }
 
 function App() {
-  return <div>Hello, World!</div>
+  return (
+    <Timetable trains={trains} />
+  )
 }
 
 export default App
