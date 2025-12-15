@@ -32,6 +32,12 @@ function App() {
   const handleReschedule = (uuidToReschedule: string) => {
     const newTime = prompt('New time?')
     const trainToReschedule = trains.find(train => train.uuid === uuidToReschedule);
+    const updatedTrain = ({ ...trainToReschedule, arrival: newTime }) as Train;
+    const updatedTrains = trains.map(train => 
+      train.uuid === uuidToReschedule ? updatedTrain : train
+    );
+    setTrains(updatedTrains);
+    localStorage.setItem("trains", JSON.stringify(updatedTrains));
 
   }
 

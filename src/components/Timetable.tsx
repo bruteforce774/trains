@@ -2,7 +2,7 @@ import type { Train } from '../types'
 type TimetableProps = { 
     trains: Train[]; 
     onDelete: (uuid: string) => void
-    onReschedule?: (uuid: string) => void 
+    onReschedule: (uuid: string) => void 
 };
 
 function Timetable({ trains, onDelete, onReschedule }: TimetableProps) {
@@ -25,7 +25,11 @@ function Timetable({ trains, onDelete, onReschedule }: TimetableProps) {
                         <td>{train.endStation}</td>
                         <td>{train.arrival}</td>
                         <td><button onClick={() => onDelete(train.uuid)}>Delete</button></td>
-                        <td><button onClick={() => onReschedule (train.uuid)}>Reschedule</button></td>
+                        <td>
+                            {onReschedule && (
+                                <button onClick={() => onReschedule(train.uuid)}>Reschedule</button>
+                            )}
+                        </td>
                     </tr>
                 ))}
             </tbody>
