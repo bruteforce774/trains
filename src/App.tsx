@@ -1,6 +1,7 @@
 import trainsData from "./data/trains.json";
 import type { Train } from "./types";
 import Timetable from "./components/Timetable";
+import AddTrainForm from "./components/AddTrainForm";
 import { useState } from "react";
 
 function App() {
@@ -41,7 +42,39 @@ function App() {
 
   }
 
-  return <Timetable trains={trains} onDelete={handleDelete} onReschedule={handleReschedule} />;
+  // React 19-style form action: receives FormData directly from the form
+  const handleAddTrain = (formData: FormData) => {
+    const trainIdent = (formData.get('trainIdent') || '').toString().trim();
+    const startStation = (formData.get('startStation') || '').toString().trim();
+    const endStation = (formData.get('endStation') || '').toString().trim();
+    const departure = (formData.get('departure') || '').toString().trim();
+    const arrival = (formData.get('arrival') || '').toString().trim();
+    const currentStationRaw = (formData.get('currentStation') || '').toString().trim();
+    if (!trainIdent || !startStation || !endStation || !departure || !arrival) return;
+
+    const newTrain: Train = {
+      uuid: crypto.randomUUID(),
+      trainIdent,
+      startStation,
+      endStation,
+      departure,
+      arrival,
+      currentStation: currentStationRaw || startStation,
+    };
+
+    setTrains(prev => {
+      const updated = [...prev, newTrain];
+      localStorage.setItem("trains", JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  return (
+    <>
+      <AddTrainForm action={handleAddTrain} />
+      <Timetable trains={trains} onDelete={handleDelete} onReschedule={handleReschedule} />
+    </>
+  );
 }
 
 export default App;
